@@ -12,11 +12,11 @@ class Dijkstra:
         for node in range(len(self.v)):
             print(f"times: {node}")
             min_d = float('inf')
-            
             for i in self.s_var:
                 if self.d[i] < min_d:
                     min_d = self.d[i]
                     min_node = i
+
             self.s_var.remove(min_node)
             self.s.append(min_node)
             for i in range(len(self.tree[min_node])):
@@ -24,7 +24,7 @@ class Dijkstra:
                     if self.d[i] > self.d[min_node] + self.tree[min_node][i]:
                         self.d[i] = self.d[min_node] + self.tree[min_node][i]
                         self.p[i] = min_node
-                    
+
             d_list = ', '.join([f"d[{i}]: "+str(d) for i,d in enumerate(self.d)])
             print(d_list)
 
@@ -43,7 +43,7 @@ class Dijkstra:
         path.reverse()
         path = ' -> '.join([str(i) for i in path])
         print(f"Minimum Path : {path}")
-
+        print(f"Minimum Distance : {self.d[end_node]}")
 
 if __name__ == '__main__':
     v = [0, 1, 2, 3, 4]
